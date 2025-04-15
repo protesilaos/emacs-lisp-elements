@@ -1161,7 +1161,7 @@ As you dig dipper into the Emacs Lisp ecosystem, you will come across uses of @c
           ;; here is test if `variable1' is a string: if it is, we
           ;; continue with the bindings, otherwise we move to the ELSE
           ;; part of the code.
-          (_ (string-match-p variable1))
+          (_ (stringp variable1))
           (variable2 (OTHER-FUNCTION OTHER-ARGUMENT)))
     THIS
   ELSE)

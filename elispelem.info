@@ -1517,7 +1517,7 @@ example:
                ;; here is test if `variable1' is a string: if it is, we
                ;; continue with the bindings, otherwise we move to the ELSE
                ;; part of the code.
-               (_ (string-match-p variable1))
+               (_ (stringp variable1))
                (variable2 (OTHER-FUNCTION OTHER-ARGUMENT)))
          THIS
        ELSE)
@@ -2846,15 +2846,15 @@ Node: The match data of the last search53611
 Node: Switching to another buffer window or narrowed state58343
 Node: Basic control flow with if cond and others60850
 Node: Control flow with if-let* and friends68733
-Node: Pattern match with pcase and related72577
-Node: Run some code or fall back to some other code78341
-Node: When to use a named function or a lambda function87261
-Node: Make your interactive function also work from Lisp calls90178
-Node: GNU Free Documentation License93899
-Node: Indices119300
-Node: Function index119476
-Node: Variable index140337
-Node: Concept index141603
+Node: Pattern match with pcase and related72570
+Node: Run some code or fall back to some other code78334
+Node: When to use a named function or a lambda function87254
+Node: Make your interactive function also work from Lisp calls90171
+Node: GNU Free Documentation License93892
+Node: Indices119293
+Node: Function index119469
+Node: Variable index140330
+Node: Concept index141596
 
 End Tag Table
 
