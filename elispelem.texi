@@ -67,7 +67,7 @@ Git repository: @uref{https://github.com/protesilaos/emacs-lisp-elements}
 * Buffers as data structures::
 * Text has its own properties::
 * Symbols, balanced expressions, and quoting: Symbols balanced expressions and quoting. 
-* Partial evaluation inside of a list::
+* Evaluate some elements inside of a list::
 * Evaluation inside of a macro or special form::
 * Mapping through a list of elements::
 * The match data of the last search::
@@ -357,7 +357,7 @@ Certain data types in Emacs Lisp are ``self-evaluating''. This means that if you
 The @code{list} function evaluates the arguments passed to it, unless they are quoted. The reason you get the return value without any apparent changes is because of self-evaluation. Notice that @code{my-greet-person-from-country} is quoted the same way we quote a list we do not want to evaluate. Without it, @code{my-greet-person-from-country} would be evaluated, which would return an error unless that was also defined as a variable.
 
 @cindex Quote to avoid evaluation
-Think of the single quote as an unambiguous instruction: ``do not evaluate the following.'' More specifically, it is an instruction to not perform evaluation if it would have normally happened in that context (@ref{Partial evaluation inside of a list}). In other words, you do not want to quote something inside of a quoted list, because that is the same as quoting it twice:
+Think of the single quote as an unambiguous instruction: ``do not evaluate the following.'' More specifically, it is an instruction to not perform evaluation if it would have normally happened in that context (@ref{Evaluate some elements inside of a list, , Partial evaluation inside of a list}). In other words, you do not want to quote something inside of a quoted list, because that is the same as quoting it twice:
 
 @lisp
 ;; This is the correct way:
@@ -380,8 +380,8 @@ Keep in mind that Emacs Lisp has a concept of ``macro'', which basically is a te
 @findex function
 As you expose yourself to more Emacs Lisp code, you will encounter quotes that are preceded by the hash sign, like @samp{#'some-symbol}. This ``sharp quote'', as it is called, is the same as the regular quote with the added semantics of referring to a function in particular. The programmer can thus better articulate the intent of a given expression, while the byte compiler may internally perform the requisite checks and optimisations. In this light, read about the functions @code{quote} and @code{function} which correspond to the quote and sharp quote, respectively.
 
-@node Partial evaluation inside of a list
-@chapter Partial evaluation inside of a list
+@node Evaluate some elements inside of a list
+@chapter Evaluate some elements inside of a list
 
 You already have an idea of how Emacs Lisp code looks like (@ref{Symbols balanced expressions and quoting, , Symbols@comma{} balanced expressions@comma{} and quoting}). You have a list that is either evaluated or taken as-is. There is another case where a list should be partially evaluated or, more specifically, where it should be treated as data instead of a function call with some elements inside of it still subject to evaluation.
 
@@ -432,7 +432,7 @@ Lastly, since I introduced you to some Greek words, I am now considering you my 
 @node Evaluation inside of a macro or special form
 @chapter Evaluation inside of a macro or special form
 
-In the most basic case of Emacs Lisp code, you have lists that are either evaluated or not (@ref{Symbols balanced expressions and quoting, , Symbols@comma{} balanced expressions@comma{} and quoting}). If you get a little more fancy, you have lists that are only partially evaluated (@ref{Partial evaluation inside of a list}). Sometimes though, you look at a piece of code and cannot understand why the normal rules of quoting and evaluation do not apply. Before you see this in action, inspect a typical function call that also involves the evaluation of a variable:
+In the most basic case of Emacs Lisp code, you have lists that are either evaluated or not (@ref{Symbols balanced expressions and quoting, , Symbols@comma{} balanced expressions@comma{} and quoting}). If you get a little more fancy, you have lists that are only partially evaluated (@ref{Evaluate some elements inside of a list, , Partial evaluation inside of a list}). Sometimes though, you look at a piece of code and cannot understand why the normal rules of quoting and evaluation do not apply. Before you see this in action, inspect a typical function call that also involves the evaluation of a variable:
 
 @lisp
 (concat my-greeting-in-greek " " "Πρωτεσίλαε")
@@ -528,7 +528,7 @@ To learn what a given macro actually expands to, place the cursor at the end of 
 @vindex default-directory
 @cindex Defining macros
 @cindex Splicing within a macro
-With those granted, it is time to write a macro. This is like a template, which empowers you to not repeat yourself. Syntactically, a macro will most probably depend on the use of the quasi-quote, the comma operator, and the mechanics of splicing (@ref{Partial evaluation inside of a list}). Here is a simple scenario where we want to run some code in a temporary buffer while setting the @code{default-directory} to the user's home directory.
+With those granted, it is time to write a macro. This is like a template, which empowers you to not repeat yourself. Syntactically, a macro will most probably depend on the use of the quasi-quote, the comma operator, and the mechanics of splicing (@ref{Evaluate some elements inside of a list, , Partial evaluation inside of a list}). Here is a simple scenario where we want to run some code in a temporary buffer while setting the @code{default-directory} to the user's home directory.
 
 @lisp
 (defmacro my-work-in-temp-buffer-from-home (&rest expressions)
@@ -1246,7 +1246,7 @@ Go ahead and evaluate that function and then try it out (@ref{Evaluate Emacs Lis
 @findex lambda
 @findex dolist
 @cindex Destructuring
-Some of those clauses are a different way to express @code{cond}. Arguably better, but not a clear winner in my opinion. What is impressive and a true paradigm shift is the concept of ``destructuring'', else the pattern matching done to the expression that effectively @code{let} binds elements of a list or cons cell to their corresponding index. The syntax used for this destructuring is arcane, until you relate it to the quasi-quote and the comma which are used for partial evaluation (@ref{Partial evaluation inside of a list}). With this in mind, consider @code{pcase-let}, @code{pcase-let*}, @code{pcase-lambda}, and @code{pcase-dolist}, as variations of the plain @code{let}, @code{let*}, @code{lambda}, and @code{dolist} with the added feature of supporting destructuring. They are not doing any of the extras of @code{pcase} though---just destructuring on top of their familiar behaviour! This is especially useful when you are working with the return value of a function which comes as a list. I will not elaborate at length, as this is an advanced use-case. If you are already at that level, you do not need me to tell you what to write. For the rest of us who, like me, typically work with simpler code, the @code{pcase-let} serves as a sufficient illustration of the principle:
+Some of those clauses are a different way to express @code{cond}. Arguably better, but not a clear winner in my opinion. What is impressive and a true paradigm shift is the concept of ``destructuring'', else the pattern matching done to the expression that effectively @code{let} binds elements of a list or cons cell to their corresponding index. The syntax used for this destructuring is arcane, until you relate it to the quasi-quote and the comma which are used for partial evaluation (@ref{Evaluate some elements inside of a list, , Partial evaluation inside of a list}). With this in mind, consider @code{pcase-let}, @code{pcase-let*}, @code{pcase-lambda}, and @code{pcase-dolist}, as variations of the plain @code{let}, @code{let*}, @code{lambda}, and @code{dolist} with the added feature of supporting destructuring. They are not doing any of the extras of @code{pcase} though---just destructuring on top of their familiar behaviour! This is especially useful when you are working with the return value of a function which comes as a list. I will not elaborate at length, as this is an advanced use-case. If you are already at that level, you do not need me to tell you what to write. For the rest of us who, like me, typically work with simpler code, the @code{pcase-let} serves as a sufficient illustration of the principle:
 
 @lisp
 (defun my-split-string-at-space (string)

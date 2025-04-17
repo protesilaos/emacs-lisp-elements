@@ -56,7 +56,7 @@ released on 2025-04-12.
 * Buffers as data structures::
 * Text has its own properties::
 * Symbols, balanced expressions, and quoting: Symbols balanced expressions and quoting.
-* Partial evaluation inside of a list::
+* Evaluate some elements inside of a list::
 * Evaluation inside of a macro or special form::
 * Mapping through a list of elements::
 * The match data of the last search::
@@ -434,7 +434,7 @@ group.  Pick ‘text-properties’ to learn more.  Well, use ‘shortdoc’ for
 everything listed there.  I do it all the time.
 
 
-File: elispelem.info,  Node: Symbols balanced expressions and quoting,  Next: Partial evaluation inside of a list,  Prev: Text has its own properties,  Up: Top
+File: elispelem.info,  Node: Symbols balanced expressions and quoting,  Next: Evaluate some elements inside of a list,  Prev: Text has its own properties,  Up: Top
 
 6 Symbols, balanced expressions, and quoting
 ********************************************
@@ -535,9 +535,9 @@ defined as a variable.
    Think of the single quote as an unambiguous instruction: “do not
 evaluate the following.” More specifically, it is an instruction to not
 perform evaluation if it would have normally happened in that context
-(*note Partial evaluation inside of a list::).  In other words, you do
-not want to quote something inside of a quoted list, because that is the
-same as quoting it twice:
+(*note Partial evaluation inside of a list: Evaluate some elements
+inside of a list.).  In other words, you do not want to quote something
+inside of a quoted list, because that is the same as quoting it twice:
 
      ;; This is the correct way:
      '(1 :hello my-greet-person-from-country)
@@ -578,10 +578,10 @@ optimisations.  In this light, read about the functions ‘quote’ and
 ‘function’ which correspond to the quote and sharp quote, respectively.
 
 
-File: elispelem.info,  Node: Partial evaluation inside of a list,  Next: Evaluation inside of a macro or special form,  Prev: Symbols balanced expressions and quoting,  Up: Top
+File: elispelem.info,  Node: Evaluate some elements inside of a list,  Next: Evaluation inside of a macro or special form,  Prev: Symbols balanced expressions and quoting,  Up: Top
 
-7 Partial evaluation inside of a list
-*************************************
+7 Evaluate some elements inside of a list
+*****************************************
 
 You already have an idea of how Emacs Lisp code looks like (*note
 Symbols, balanced expressions, and quoting: Symbols balanced expressions
@@ -674,7 +674,7 @@ situation.  Just how you should remember to enjoy the time spent
 tinkering with Emacs.  But enough of that!  Back to reading this book.
 
 
-File: elispelem.info,  Node: Evaluation inside of a macro or special form,  Next: Mapping through a list of elements,  Prev: Partial evaluation inside of a list,  Up: Top
+File: elispelem.info,  Node: Evaluation inside of a macro or special form,  Next: Mapping through a list of elements,  Prev: Evaluate some elements inside of a list,  Up: Top
 
 8 Evaluation inside of a macro or special form
 **********************************************
@@ -683,11 +683,11 @@ In the most basic case of Emacs Lisp code, you have lists that are
 either evaluated or not (*note Symbols, balanced expressions, and
 quoting: Symbols balanced expressions and quoting.).  If you get a
 little more fancy, you have lists that are only partially evaluated
-(*note Partial evaluation inside of a list::).  Sometimes though, you
-look at a piece of code and cannot understand why the normal rules of
-quoting and evaluation do not apply.  Before you see this in action,
-inspect a typical function call that also involves the evaluation of a
-variable:
+(*note Partial evaluation inside of a list: Evaluate some elements
+inside of a list.).  Sometimes though, you look at a piece of code and
+cannot understand why the normal rules of quoting and evaluation do not
+apply.  Before you see this in action, inspect a typical function call
+that also involves the evaluation of a variable:
 
      (concat my-greeting-in-greek " " "Πρωτεσίλαε")
 
@@ -800,9 +800,9 @@ macro’s stead.
 template, which empowers you to not repeat yourself.  Syntactically, a
 macro will most probably depend on the use of the quasi-quote, the comma
 operator, and the mechanics of splicing (*note Partial evaluation inside
-of a list::).  Here is a simple scenario where we want to run some code
-in a temporary buffer while setting the ‘default-directory’ to the
-user’s home directory.
+of a list: Evaluate some elements inside of a list.).  Here is a simple
+scenario where we want to run some code in a temporary buffer while
+setting the ‘default-directory’ to the user’s home directory.
 
      (defmacro my-work-in-temp-buffer-from-home (&rest expressions)
        "Evaluate EXPRESSIONS in a temporary buffer with `default-directory' set to the user's home."
@@ -1615,17 +1615,18 @@ else the pattern matching done to the expression that effectively ‘let’
 binds elements of a list or cons cell to their corresponding index.  The
 syntax used for this destructuring is arcane, until you relate it to the
 quasi-quote and the comma which are used for partial evaluation (*note
-Partial evaluation inside of a list::).  With this in mind, consider
-‘pcase-let’, ‘pcase-let*’, ‘pcase-lambda’, and ‘pcase-dolist’, as
-variations of the plain ‘let’, ‘let*’, ‘lambda’, and ‘dolist’ with the
-added feature of supporting destructuring.  They are not doing any of
-the extras of ‘pcase’ though—just destructuring on top of their familiar
-behaviour!  This is especially useful when you are working with the
-return value of a function which comes as a list.  I will not elaborate
-at length, as this is an advanced use-case.  If you are already at that
-level, you do not need me to tell you what to write.  For the rest of us
-who, like me, typically work with simpler code, the ‘pcase-let’ serves
-as a sufficient illustration of the principle:
+Partial evaluation inside of a list: Evaluate some elements inside of a
+list.).  With this in mind, consider ‘pcase-let’, ‘pcase-let*’,
+‘pcase-lambda’, and ‘pcase-dolist’, as variations of the plain ‘let’,
+‘let*’, ‘lambda’, and ‘dolist’ with the added feature of supporting
+destructuring.  They are not doing any of the extras of ‘pcase’
+though—just destructuring on top of their familiar behaviour!  This is
+especially useful when you are working with the return value of a
+function which comes as a list.  I will not elaborate at length, as this
+is an advanced use-case.  If you are already at that level, you do not
+need me to tell you what to write.  For the rest of us who, like me,
+typically work with simpler code, the ‘pcase-let’ serves as a sufficient
+illustration of the principle:
 
      (defun my-split-string-at-space (string)
        "Split STRING at the space, returning a list of strings."
@@ -2462,7 +2463,7 @@ B.1 Function index
                                                               (line  63)
 * cdr:                                   Symbols balanced expressions and quoting.
                                                               (line  63)
-* concat:                                Partial evaluation inside of a list.
+* concat:                                Evaluate some elements inside of a list.
                                                               (line  44)
 * concat <1>:                            Evaluation inside of a macro or special form.
                                                               (line  18)
@@ -2579,7 +2580,7 @@ B.1 Function index
                                                               (line   6)
 * message:                               Symbols balanced expressions and quoting.
                                                               (line  13)
-* message <1>:                           Partial evaluation inside of a list.
+* message <1>:                           Evaluate some elements inside of a list.
                                                               (line  24)
 * message <2>:                           Pattern match with pcase and related.
                                                               (line  33)
@@ -2754,11 +2755,11 @@ B.3 Concept index
                                                               (line   6)
 * Catching errors and other signals:     Run some code or fall back to some other code.
                                                               (line  72)
-* Comma operator:                        Partial evaluation inside of a list.
+* Comma operator:                        Evaluate some elements inside of a list.
                                                               (line  44)
 * Control flow:                          Basic control flow with if cond and others.
                                                               (line  19)
-* Declare a variable:                    Partial evaluation inside of a list.
+* Declare a variable:                    Evaluate some elements inside of a list.
                                                               (line  14)
 * Define a simple function:              Symbols balanced expressions and quoting.
                                                               (line   6)
@@ -2798,7 +2799,7 @@ B.3 Concept index
                                                               (line 117)
 * Propertise text:                       Text has its own properties.
                                                               (line   6)
-* Quasi quote:                           Partial evaluation inside of a list.
+* Quasi quote:                           Evaluate some elements inside of a list.
                                                               (line  44)
 * Quote to avoid evaluation:             Symbols balanced expressions and quoting.
                                                               (line  99)
@@ -2816,7 +2817,7 @@ B.3 Concept index
                                                               (line 168)
 * Shortdoc for text properties:          Text has its own properties.
                                                               (line  49)
-* Splicing in general:                   Partial evaluation inside of a list.
+* Splicing in general:                   Evaluate some elements inside of a list.
                                                               (line  66)
 * Splicing within a macro:               Evaluation inside of a macro or special form.
                                                               (line 123)
@@ -2833,28 +2834,28 @@ B.3 Concept index
 
 Tag Table:
 Node: Top839
-Node: Getting started with Emacs Lisp3008
-Node: Evaluate Emacs Lisp6188
-Node: Side effect and return value11078
-Node: Buffers as data structures13693
-Node: Text has its own properties19195
-Node: Symbols balanced expressions and quoting22352
-Node: Partial evaluation inside of a list29627
-Node: Evaluation inside of a macro or special form34802
-Node: Mapping through a list of elements46236
-Node: The match data of the last search53611
-Node: Switching to another buffer window or narrowed state58343
-Node: Basic control flow with if cond and others60850
-Node: Control flow with if-let* and friends68733
-Node: Pattern match with pcase and related72570
-Node: Run some code or fall back to some other code78334
-Node: When to use a named function or a lambda function87254
-Node: Make your interactive function also work from Lisp calls90171
-Node: GNU Free Documentation License93892
-Node: Indices119293
-Node: Function index119469
-Node: Variable index140330
-Node: Concept index141596
+Node: Getting started with Emacs Lisp3012
+Node: Evaluate Emacs Lisp6192
+Node: Side effect and return value11082
+Node: Buffers as data structures13697
+Node: Text has its own properties19199
+Node: Symbols balanced expressions and quoting22356
+Node: Evaluate some elements inside of a list29675
+Node: Evaluation inside of a macro or special form34862
+Node: Mapping through a list of elements46380
+Node: The match data of the last search53755
+Node: Switching to another buffer window or narrowed state58487
+Node: Basic control flow with if cond and others60994
+Node: Control flow with if-let* and friends68877
+Node: Pattern match with pcase and related72714
+Node: Run some code or fall back to some other code78518
+Node: When to use a named function or a lambda function87438
+Node: Make your interactive function also work from Lisp calls90355
+Node: GNU Free Documentation License94076
+Node: Indices119477
+Node: Function index119653
+Node: Variable index140522
+Node: Concept index141788
 
 End Tag Table
 
