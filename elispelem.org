@@ -314,7 +314,7 @@ Keep in mind that Emacs Lisp has a concept of "macro", which basically is a temp
 #+findex: function
 As you expose yourself to more Emacs Lisp code, you will encounter quotes that are preceded by the hash sign, like =#'some-symbol=. This "sharp quote", as it is called, is the same as the regular quote with the added semantics of referring to a function in particular. The programmer can thus better articulate the intent of a given expression, while the byte compiler may internally perform the requisite checks and optimisations. In this light, read about the functions ~quote~ and ~function~ which correspond to the quote and sharp quote, respectively.
 
-* Partial evaluation inside of a list
+* Evaluate some elements inside of a list
 :PROPERTIES:
 :CUSTOM_ID: h:partial-evaluation-inside-of-a-list
 :END:
