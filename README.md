@@ -1,6 +1,6 @@
 # Emacs Lisp Elements
 
-A book that provides big picture view of the Emacs Lisp programming
+A book that provides a big picture view of the Emacs Lisp programming
 language by combining prose with code. The goal is to give readers an
 idea of how Elisp works by showing some of the main concepts or
 patterns discernible in everyday code.
@@ -18,3 +18,8 @@ I hope you enjoy it and continue to have fun with Emacs.
 
 + Official page: <https://protesilaos.com/emacs/emacs-lisp-elements>
 + Git repository: <https://github.com/protesilaos/emacs-lisp-elements>
+
+## How to read this as an Info manual
+
+Once you clone the Git repository, use `M-x dired` to open its directory.
+With the cursor over `elispelem.info` do `M-x dired-info`.
