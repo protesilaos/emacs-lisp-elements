@@ -22,4 +22,4 @@ I hope you enjoy it and continue to have fun with Emacs.
 ## How to read this as an Info manual
 
 Once you clone the Git repository, use `M-x dired` to open its directory.
-With the cursor over `elispelem.info` do `M-x dired-info`.
+With the cursor over `elispelem.info` do `M-x dired-do-info`.
