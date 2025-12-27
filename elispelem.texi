@@ -68,7 +68,7 @@ Git repository: @uref{https://github.com/protesilaos/emacs-lisp-elements}
 * Evaluate Emacs Lisp::
 * Introspecting Emacs::
 * Side effect and return value::
-* Symbols, balanced expressions, and quoting: Symbols balanced expressions and quoting. 
+* Symbols, balanced expressions, and quoting: Symbols balanced expressions and quoting.
 * Buffers as data::
 * Text has its own properties::
 * Add metadata to symbols::
@@ -78,8 +78,8 @@ Git repository: @uref{https://github.com/protesilaos/emacs-lisp-elements}
 * Evaluation inside of a macro or special form::
 * Mapping over a list of elements::
 * The match data of the last search::
-* Switching to another buffer, window, or narrowed state: Switching to another buffer window or narrowed state. 
-* Basic control flow with @code{if}, @code{cond}, and others: Basic control flow with @code{if} @code{cond} and others. 
+* Switching to another buffer, window, or narrowed state: Switching to another buffer window or narrowed state.
+* Basic control flow with @code{if}, @code{cond}, and others: Basic control flow with @code{if} @code{cond} and others.
 * Control flow with @code{if-let*} and friends::
 * Autoloading symbols::
 * Pattern match with @code{pcase} and related::
@@ -456,8 +456,7 @@ Freedom and uniformity of computation together give you maximum
 control over your text editor (@ref{Emacs as a computing environment}). The
 promise, then, is that learning to program in Elisp grants you access
 to the full power of Emacs, such that you do exactly what you want
-with it, give some basic concepts such as buffers and text
-manipulation (@ref{Buffers as data}).
+with it.
 
 @cindex Interactive functions are commands
 You type a key on your keyboard and a character is written to the
