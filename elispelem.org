@@ -971,7 +971,7 @@ the disk, loads them into its running memory, and displays the
 contents in a buffer. This buffer now has as its data the contents of
 the file and anything else that can be extracted therefrom. Each
 character exists at a given position, which is a number. The function
-~point~ function gives you the numeric position at the point you are
+~point~ gives you the numeric position at the point you are
 on, which typically corresponds to where the cursor is ([[#h:evaluate-emacs-lisp][Evaluate Emacs Lisp]]).
 
 At the beginning of a buffer, ~point~ returns the value of =1= ([[#h:side-effect-and-return-value][Side
