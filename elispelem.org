@@ -1201,7 +1201,7 @@ quote or by passing its symbol as an argument to the function
 
 #+begin_src emacs-lisp
 ;; Define the variable `my-name' and give it a value.
-(defvar my-name "Protesilaos")
+(defvar my-name "Prot")
 ;; => my-name
 
 ;; What is the value of the symbol `my-name', where the symbol is a variable?
