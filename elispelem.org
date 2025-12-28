@@ -1040,7 +1040,7 @@ some of the following:
 #+findex: buffer-list
 #+cindex: Hidden buffers
 The latter point is perhaps the most open-ended one. Buffers are like
-a bundle of variables, which includes their contents, any overlays or
+a bundle of variables, which include their contents, any overlays or
 text properties associated with the contents, the active major mode,
 any active minor modes, and all the buffer-local values of other
 variables ([[#h:what-are-major-and-minor-modes][What are major and minor modes]]). In the following code
