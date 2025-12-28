@@ -1107,7 +1107,7 @@ a "face".
 Faces are constructs of the Emacs display engine that bundle together
 typography and colour attributes, such as the font family and weight,
 as well as foreground and background hues. Every piece of text uses
-the ~default~ face at minimum. Whenever an colour is present or some
+the ~default~ face at minimum. Whenever a colour is present or some
 other typographic style, then there are more faces present.
 
 To get a =*Help*= buffer with information about the text properties
@@ -1219,12 +1219,12 @@ Similarly, we can get the function value of a symbol by calling ~symbol-function
 #+begin_src emacs-lisp
 (defun my-hello (person)
   "Say hello to PERSON."
-  (meesage "Hello %s" person))
+  (message "Hello %s" person))
 ;; => my-hello
 
 ;; What is the symbol `my-hello' as a function?
 (symbol-function 'my-hello)
-;; => #[(person) ((meesage "Hello %s" person)) nil nil "Say hello to PERSON."]
+;; => #[(person) ((message "Hello %s" person)) nil nil "Say hello to PERSON."]
 
 ;; What happens if I call `my-hello' without parentheses and/or a quote?
 my-hello
