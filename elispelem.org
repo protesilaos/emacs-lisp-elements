@@ -364,16 +364,15 @@ potential inspection, modification, and redistribution ([[#h:introspecting-emacs
 Nothing is hidden from you. While the uniform extensibility
 through Emacs Lisp means that the code you are reading and the code
 you are writing are treated the same way. You do not need to learn
-different, typically incompatible programming languages or
-configuration formats, to make Emacs perform the computations you
+different, typically incompatible, programming languages or
+configuration formats to make Emacs perform the computations you
 want. Emacs Lisp is all there is.
 
 Freedom and uniformity of computation together give you maximum
 control over your text editor ([[#h:emacs-as-a-computing-environment][Emacs as a computing environment]]). The
 promise, then, is that learning to program in Elisp grants you access
 to the full power of Emacs, such that you do exactly what you want
-with it, give some basic concepts such as buffers and text
-manipulation ([[#h:buffers-as-data-structures][Buffers as data]]).
+with it.
 
 #+cindex: Interactive functions are commands
 You type a key on your keyboard and a character is written to the
