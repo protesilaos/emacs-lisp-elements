@@ -1551,7 +1551,7 @@ learn from its documentation ([[#h:introspecting-emacs][Introspecting Emacs]]):
 
 #+begin_src emacs-lisp
 (defun my-display-line-numbers-toggle ()
-  "Enable `display-line-numbers-mode' is `hl-line-mode' is active.
+  "Enable `display-line-numbers-mode' if `hl-line-mode' is active.
 Else disable `display-line-numbers-mode'."
   (if hl-line-mode
       (display-line-numbers-mode 1)
