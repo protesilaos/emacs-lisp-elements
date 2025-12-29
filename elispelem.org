@@ -1858,7 +1858,7 @@ person all while returning everything as a list:
 
 Do not forget that you will get an error if you are not quoting this
 list at all, because the first element ~one~ will be treated as the
-symbol a function, which must then be called with all other elements
+symbol defining a function, which must then be called with all other elements
 as its arguments. Chances are that ~one~ is not defined as a function
 in your current Emacs session or those arguments are not meaningful to
 it, anyway. Plus, ~two~ and ~four~ will then have to exist as
