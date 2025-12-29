@@ -971,7 +971,7 @@ the disk, loads them into its running memory, and displays the
 contents in a buffer. This buffer now has as its data the contents of
 the file and anything else that can be extracted therefrom. Each
 character exists at a given position, which is a number. The function
-~point~ function gives you the numeric position at the point you are
+~point~ gives you the numeric position at the point you are
 on, which typically corresponds to where the cursor is ([[#h:evaluate-emacs-lisp][Evaluate Emacs Lisp]]).
 
 At the beginning of a buffer, ~point~ returns the value of =1= ([[#h:side-effect-and-return-value][Side
@@ -1040,7 +1040,7 @@ some of the following:
 #+findex: buffer-list
 #+cindex: Hidden buffers
 The latter point is perhaps the most open-ended one. Buffers are like
-a bundle of variables, which includes their contents, any overlays or
+a bundle of variables, which include their contents, any overlays or
 text properties associated with the contents, the active major mode,
 any active minor modes, and all the buffer-local values of other
 variables ([[#h:what-are-major-and-minor-modes][What are major and minor modes]]). In the following code
@@ -1201,7 +1201,7 @@ quote or by passing its symbol as an argument to the function
 
 #+begin_src emacs-lisp
 ;; Define the variable `my-name' and give it a value.
-(defvar my-name "Protesilaos")
+(defvar my-name "Prot")
 ;; => my-name
 
 ;; What is the value of the symbol `my-name', where the symbol is a variable?
@@ -1391,7 +1391,7 @@ and ~add-hook~ calls that also have a local scope ([[#h:hooks-and-the-advice-mec
 
 #+cindex: The default major mode is Fundamental mode
 #+findex: fundamental-mode
-What you learn from studying the definition of ~text-mode~ is that is
+What you learn from studying the definition of ~text-mode~ is that it
 effectively is a bundle of settings. By setting a buffer to use the
 major mode ~text-mode~, we are practically opting in to those
 settings. If you create a new buffer, whose major mode is
@@ -1453,7 +1453,7 @@ though they generally combine harmoniously. For example, Emacs comes
 with lots of useful minor modes out-of-the-box. One of them highlights
 the current line. It is called ~hl-line-mode~. Another displays line
 numbers on the side of the window: its symbol is ~display-line-numbers-mode~.
-Those can work together in a buffer together with other minor modes,
+Those can work together in a buffer in conjunction with other minor modes,
 such as ~show-paren-mode~, that highlights matching parentheses, and
 ~electric-pair-mode~ that inserts certain characters as pairs, like
 double quotes and parentheses. Because minor modes usually have
@@ -1462,7 +1462,7 @@ and globally. Whatever conflicts are up to the user to resolve.
 
 Otherwise, minor modes follow the rationale of major modes: they are
 commands that typically set some variables (not to imply they are
-simply though, as they can do anything they want). Since minor modes
+simple though, as they can do anything they want). Since minor modes
 can, in principle, coexist, calling their command with {{{kbd(M-x)}}}
 (~execute-extended-command~) toggles them on and off. Such a switch
 would not be of much use for major modes: it would be the same as
@@ -1551,7 +1551,7 @@ learn from its documentation ([[#h:introspecting-emacs][Introspecting Emacs]]):
 
 #+begin_src emacs-lisp
 (defun my-display-line-numbers-toggle ()
-  "Enable `display-line-numbers-mode' is `hl-line-mode' is active.
+  "Enable `display-line-numbers-mode' if `hl-line-mode' is active.
 Else disable `display-line-numbers-mode'."
   (if hl-line-mode
       (display-line-numbers-mode 1)
@@ -1602,7 +1602,7 @@ parameters are not the same:
 
 Thus far we have examined "normal hooks", i.e. hooks whose functions
 are called without any arguments. By convention, a normal hook has the
-=-hook= prefix. "Abnormal hooks" are called with one or more
+=-hook= suffix. "Abnormal hooks" are called with one or more
 arguments. Each hook decides how many those are and what they are
 expected to be. Abnormal hooks have the suffix =-functions=. The
 ~add-hook~ and ~remove-hook~ work the same way for abnormal hooks.
@@ -1845,7 +1845,7 @@ expression that is "quasi quoted". The backtick behaves like the
 single quote except for anything that is preceded by a comma. The
 comma only has meaning inside of a quasi quoted list, otherwise you
 get an error. The comma is an instruction to "evaluate the thing that
-follows". It written as a prefix without a space after it and applies
+follows". It is written as a prefix without a space after it and applies
 to the thing it is attached to. The "thing" that follows is either a
 symbol or a list. The list can, of course, be a function call of
 arbitrary complexity. Let me then use ~concat~ to greet a certain
@@ -1858,7 +1858,7 @@ person all while returning everything as a list:
 
 Do not forget that you will get an error if you are not quoting this
 list at all, because the first element ~one~ will be treated as the
-symbol a function, which must then be called with all other elements
+symbol defining a function, which must then be called with all other elements
 as its arguments. Chances are that ~one~ is not defined as a function
 in your current Emacs session or those arguments are not meaningful to
 it, anyway. Plus, ~two~ and ~four~ will then have to exist as
@@ -1903,7 +1903,7 @@ English, so she said "It is all Greek to me". Not knowing that her
 answer is an idiom for "I do not understand you", I blithely replied,
 "Yes, madame, Greek; me no speak England very best." I was not
 actually a beginner at the time. I simply could not pass on the
-opportunity to make fun of the situation. Just how you should remember
+opportunity to make fun of the situation. This illustrates just how you should remember
 to enjoy the time spent tinkering with Emacs. But enough of that! Back
 to the elements of Emacs Lisp.
 
@@ -3290,7 +3290,7 @@ any rate, this is where the ~pcase~ Lisp macro comes in ([[#h:evaluation-inside-
 At its more basic formulation, it is like ~cond~, in that it tests the
 return value of a given expression against a list of conditions.
 Unlike ~cond~, it can perform pattern matching and create binding that
-it can then used based on the pattern it is matching.
+it can then use based on the pattern it is matching.
 
 Let me show you how ~pcase~ works like a ~cond~. Here is an example
 that compares the buffer-local value of the variable ~major-mode~ for
@@ -3583,7 +3583,7 @@ In practice, your code may encounter an error, which is produced by
 the ~error~ function (it technically is the ~signal~ function with the
 ~error~ type). When that happens, you are presented with a backtrace
 and Emacs enters a "recursive edit". The recursive edit means that
-unwinding forms are suspend until you either type {{{kbd(C-])}}}
+unwinding forms are suspended until you either type {{{kbd(C-])}}}
 (~abort-recursive-edit~) or select the window with the =*Backtrace*=
 buffer and do {{{kbd(q)}}} (~debugger-quit~) from there. Emacs can
 enter more than one such recursive edit. While you are inside one, no
