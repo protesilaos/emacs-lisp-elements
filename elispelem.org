@@ -3583,7 +3583,7 @@ In practice, your code may encounter an error, which is produced by
 the ~error~ function (it technically is the ~signal~ function with the
 ~error~ type). When that happens, you are presented with a backtrace
 and Emacs enters a "recursive edit". The recursive edit means that
-unwinding forms are suspend until you either type {{{kbd(C-])}}}
+unwinding forms are suspended until you either type {{{kbd(C-])}}}
 (~abort-recursive-edit~) or select the window with the =*Backtrace*=
 buffer and do {{{kbd(q)}}} (~debugger-quit~) from there. Emacs can
 enter more than one such recursive edit. While you are inside one, no
