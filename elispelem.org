@@ -1845,7 +1845,7 @@ expression that is "quasi quoted". The backtick behaves like the
 single quote except for anything that is preceded by a comma. The
 comma only has meaning inside of a quasi quoted list, otherwise you
 get an error. The comma is an instruction to "evaluate the thing that
-follows". It written as a prefix without a space after it and applies
+follows". It is written as a prefix without a space after it and applies
 to the thing it is attached to. The "thing" that follows is either a
 symbol or a list. The list can, of course, be a function call of
 arbitrary complexity. Let me then use ~concat~ to greet a certain
