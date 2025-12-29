@@ -1391,7 +1391,7 @@ and ~add-hook~ calls that also have a local scope ([[#h:hooks-and-the-advice-mec
 
 #+cindex: The default major mode is Fundamental mode
 #+findex: fundamental-mode
-What you learn from studying the definition of ~text-mode~ is that is
+What you learn from studying the definition of ~text-mode~ is that it
 effectively is a bundle of settings. By setting a buffer to use the
 major mode ~text-mode~, we are practically opting in to those
 settings. If you create a new buffer, whose major mode is
