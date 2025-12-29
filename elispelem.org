@@ -1453,7 +1453,7 @@ though they generally combine harmoniously. For example, Emacs comes
 with lots of useful minor modes out-of-the-box. One of them highlights
 the current line. It is called ~hl-line-mode~. Another displays line
 numbers on the side of the window: its symbol is ~display-line-numbers-mode~.
-Those can work together in a buffer together with other minor modes,
+Those can work together in a buffer in conjunction with other minor modes,
 such as ~show-paren-mode~, that highlights matching parentheses, and
 ~electric-pair-mode~ that inserts certain characters as pairs, like
 double quotes and parentheses. Because minor modes usually have
