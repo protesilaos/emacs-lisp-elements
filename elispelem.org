@@ -1602,7 +1602,7 @@ parameters are not the same:
 
 Thus far we have examined "normal hooks", i.e. hooks whose functions
 are called without any arguments. By convention, a normal hook has the
-=-hook= prefix. "Abnormal hooks" are called with one or more
+=-hook= suffix. "Abnormal hooks" are called with one or more
 arguments. Each hook decides how many those are and what they are
 expected to be. Abnormal hooks have the suffix =-functions=. The
 ~add-hook~ and ~remove-hook~ work the same way for abnormal hooks.
