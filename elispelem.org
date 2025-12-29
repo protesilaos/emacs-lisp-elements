@@ -3290,7 +3290,7 @@ any rate, this is where the ~pcase~ Lisp macro comes in ([[#h:evaluation-inside-
 At its more basic formulation, it is like ~cond~, in that it tests the
 return value of a given expression against a list of conditions.
 Unlike ~cond~, it can perform pattern matching and create binding that
-it can then used based on the pattern it is matching.
+it can then use based on the pattern it is matching.
 
 Let me show you how ~pcase~ works like a ~cond~. Here is an example
 that compares the buffer-local value of the variable ~major-mode~ for
