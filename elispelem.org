@@ -1462,7 +1462,7 @@ and globally. Whatever conflicts are up to the user to resolve.
 
 Otherwise, minor modes follow the rationale of major modes: they are
 commands that typically set some variables (not to imply they are
-simply though, as they can do anything they want). Since minor modes
+simple though, as they can do anything they want). Since minor modes
 can, in principle, coexist, calling their command with {{{kbd(M-x)}}}
 (~execute-extended-command~) toggles them on and off. Such a switch
 would not be of much use for major modes: it would be the same as
