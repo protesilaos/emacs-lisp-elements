@@ -1903,7 +1903,7 @@ English, so she said "It is all Greek to me". Not knowing that her
 answer is an idiom for "I do not understand you", I blithely replied,
 "Yes, madame, Greek; me no speak England very best." I was not
 actually a beginner at the time. I simply could not pass on the
-opportunity to make fun of the situation. Just how you should remember
+opportunity to make fun of the situation. This illustrates just how you should remember
 to enjoy the time spent tinkering with Emacs. But enough of that! Back
 to the elements of Emacs Lisp.
 
