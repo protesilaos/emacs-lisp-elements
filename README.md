@@ -30,3 +30,5 @@ If you wish to make changes, please limit them to typos or actual
 errors (e.g. if a function name is wrong). Make all changes to the
 file `elispelem.org`: I will then take care to export it to the other
 formats.
+
+How I create the other files: <https://protesilaos.com/codelog/2025-12-27-emacs-lisp-elements-epub-pdf/>.
