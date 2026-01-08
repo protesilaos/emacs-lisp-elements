@@ -4088,6 +4088,16 @@ Use this concept to better understand what the value proposition of
 Emacs is for you in present time and in terms of sheer potential. Have
 fun!
 
+* Acknowledgements
+:PROPERTIES:
+:CUSTOM_ID: h:acknowledgements
+:END:
+
+Thanks to the following people for fixing typos and spotting other
+such mistakes:
+
+Laurent Gatto, Nicolas Semrau, slackline.
+
 * COPYING
 :PROPERTIES:
 :COPYING: t
