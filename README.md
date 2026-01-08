@@ -23,3 +23,10 @@ I hope you enjoy it and continue to have fun with Emacs.
 
 Once you clone the Git repository, use `M-x dired` to open its directory.
 With the cursor over `elispelem.info` do `M-x dired-do-info`.
+
+## Contributing
+
+If you wish to make changes, please limit them to typos or actual
+errors (e.g. if a function name is wrong). Make all changes to the
+file `elispelem.org`: I will then take care to export it to the other
+formats.
