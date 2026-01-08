@@ -372,7 +372,8 @@ Freedom and uniformity of computation together give you maximum
 control over your text editor ([[#h:emacs-as-a-computing-environment][Emacs as a computing environment]]). The
 promise, then, is that learning to program in Elisp grants you access
 to the full power of Emacs, such that you do exactly what you want
-with it.
+with it, given that you also understand some basic concepts such as
+buffers and text manipulation ([[#h:buffers-as-data-structures][Buffers as data]]).
 
 #+cindex: Interactive functions are commands
 You type a key on your keyboard and a character is written to the
