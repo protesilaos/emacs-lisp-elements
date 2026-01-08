@@ -971,8 +971,8 @@ the disk, loads them into its running memory, and displays the
 contents in a buffer. This buffer now has as its data the contents of
 the file and anything else that can be extracted therefrom. Each
 character exists at a given position, which is a number. The function
-~point~ gives you the numeric position at the point you are
-on, which typically corresponds to where the cursor is ([[#h:evaluate-emacs-lisp][Evaluate Emacs Lisp]]).
+~point~ gives you the numeric position at the point you are on, which
+typically corresponds to where the cursor is ([[#h:evaluate-emacs-lisp][Evaluate Emacs Lisp]]).
 
 At the beginning of a buffer, ~point~ returns the value of =1= ([[#h:side-effect-and-return-value][Side
 effect and return value]]). There are plenty of functions that return a
@@ -1040,14 +1040,14 @@ some of the following:
 #+findex: buffer-list
 #+cindex: Hidden buffers
 The latter point is perhaps the most open-ended one. Buffers are like
-a bundle of variables, which include their contents, any overlays or
-text properties associated with the contents, the active major mode,
-any active minor modes, and all the buffer-local values of other
-variables ([[#h:what-are-major-and-minor-modes][What are major and minor modes]]). In the following code
-block, I am using the ~seq-filter~ function to iterate through the
-return value of the function ~buffer-list~ to get a list of buffers
-that (i) are not hidden from the user's view and (ii) have ~text-mode~
-as their major mode or a derivative thereof ([[#h:mapping-through-a-list-of-elements][Mapping over a list of elements]]).
+a bundle of variables. This bundle includes their contents, any
+overlays or text properties associated with the contents, the active
+major mode, any active minor modes, and all the buffer-local values of
+other variables ([[#h:what-are-major-and-minor-modes][What are major and minor modes]]). In the following
+code block, I am using the ~seq-filter~ function to iterate through
+the return value of the function ~buffer-list~ to get a list of
+buffers that (i) are not hidden from the user's view and (ii) have
+~text-mode~ as their major mode or a derivative thereof ([[#h:mapping-through-a-list-of-elements][Mapping over a list of elements]]).
 
 #+begin_src emacs-lisp
 (seq-filter
@@ -1201,16 +1201,16 @@ quote or by passing its symbol as an argument to the function
 
 #+begin_src emacs-lisp
 ;; Define the variable `my-name' and give it a value.
-(defvar my-name "Prot")
+(defvar my-name "Protesilaos")
 ;; => my-name
 
 ;; What is the value of the symbol `my-name', where the symbol is a variable?
 (symbol-value 'my-name)
-;; => "Prot"
+;; => "Protesilaos"
 
 ;; What is the value of the variable `my-name' if I do not quote it?
 my-name
-;; => "Prot"
+;; => "Protesilaos"
 #+end_src
 
 #+findex: symbol-function
@@ -1453,12 +1453,13 @@ though they generally combine harmoniously. For example, Emacs comes
 with lots of useful minor modes out-of-the-box. One of them highlights
 the current line. It is called ~hl-line-mode~. Another displays line
 numbers on the side of the window: its symbol is ~display-line-numbers-mode~.
-Those can work together in a buffer in conjunction with other minor modes,
-such as ~show-paren-mode~, that highlights matching parentheses, and
-~electric-pair-mode~ that inserts certain characters as pairs, like
-double quotes and parentheses. Because minor modes usually have
-complementary functionality, they are designed to work both locally
-and globally. Whatever conflicts are up to the user to resolve.
+Those can work together in a buffer in conjunction with other minor
+modes, such as ~show-paren-mode~, that highlights matching
+parentheses, and ~electric-pair-mode~ that inserts certain characters
+as pairs, like double quotes and parentheses. Because minor modes
+usually have complementary functionality, they are designed to work
+both locally and globally. Whatever conflicts are up to the user to
+resolve.
 
 Otherwise, minor modes follow the rationale of major modes: they are
 commands that typically set some variables (not to imply they are
@@ -1845,10 +1846,10 @@ expression that is "quasi quoted". The backtick behaves like the
 single quote except for anything that is preceded by a comma. The
 comma only has meaning inside of a quasi quoted list, otherwise you
 get an error. The comma is an instruction to "evaluate the thing that
-follows". It is written as a prefix without a space after it and applies
-to the thing it is attached to. The "thing" that follows is either a
-symbol or a list. The list can, of course, be a function call of
-arbitrary complexity. Let me then use ~concat~ to greet a certain
+follows". It is written as a prefix without a space after it and
+applies to the thing it is attached to. The "thing" that follows is
+either a symbol or a list. The list can, of course, be a function call
+of arbitrary complexity. Let me then use ~concat~ to greet a certain
 person all while returning everything as a list:
 
 #+begin_src emacs-lisp
@@ -1858,13 +1859,13 @@ person all while returning everything as a list:
 
 Do not forget that you will get an error if you are not quoting this
 list at all, because the first element ~one~ will be treated as the
-symbol defining a function, which must then be called with all other elements
-as its arguments. Chances are that ~one~ is not defined as a function
-in your current Emacs session or those arguments are not meaningful to
-it, anyway. Plus, ~two~ and ~four~ will then have to exist as
-variables, since they are not quoted either. Else more errors ensue.
-By quasi quoting the list, we get the best of both worlds: evaluate
-what we need and skip the evaluation of all the rest.
+symbol of a defined function, which must then be called with all other
+elements as its arguments. Chances are that ~one~ is not defined as a
+function in your current Emacs session or those arguments are not
+meaningful to it, anyway. Plus, ~two~ and ~four~ will then have to
+exist as variables, since they are not quoted either. Else more errors
+ensue. By quasi quoting the list, we get the best of both worlds:
+evaluate what we need and skip the evaluation of all the rest.
 
 #+cindex: Splicing in general
 Other than the comma operator, there is the =,@= (how is this even
@@ -1903,9 +1904,9 @@ English, so she said "It is all Greek to me". Not knowing that her
 answer is an idiom for "I do not understand you", I blithely replied,
 "Yes, madame, Greek; me no speak England very best." I was not
 actually a beginner at the time. I simply could not pass on the
-opportunity to make fun of the situation. This illustrates just how you should remember
-to enjoy the time spent tinkering with Emacs. But enough of that! Back
-to the elements of Emacs Lisp.
+opportunity to make fun of the situation. This illustrates how you
+should remember to enjoy the time spent tinkering with Emacs. But
+enough of that! Back to the elements of Emacs Lisp.
 
 * Evaluation inside of a macro or special form
 :PROPERTIES:
