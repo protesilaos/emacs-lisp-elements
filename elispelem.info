@@ -74,6 +74,7 @@ released on 2025-12-10.
 * When to use a named function or a lambda function::
 * Make your interactive function also work from Lisp calls::
 * Emacs as a computing environment::
+* Acknowledgements::
 * GNU Free Documentation License::
 * Indices::
 
@@ -406,7 +407,7 @@ Emacs::).
    Nothing is hidden from you.  While the uniform extensibility through
 Emacs Lisp means that the code you are reading and the code you are
 writing are treated the same way.  You do not need to learn different,
-typically incompatible programming languages or configuration formats,
+typically incompatible, programming languages or configuration formats
 to make Emacs perform the computations you want.  Emacs Lisp is all
 there is.
 
@@ -414,8 +415,9 @@ there is.
 control over your text editor (*note Emacs as a computing
 environment::).  The promise, then, is that learning to program in Elisp
 grants you access to the full power of Emacs, such that you do exactly
-what you want with it, give some basic concepts such as buffers and text
-manipulation (*note Buffers as data::).
+what you want with it, given that you also understand some basic
+concepts such as buffers and text manipulation (*note Buffers as
+data::).
 
    You type a key on your keyboard and a character is written to the
 current buffer at the point where the cursor is.  This is a function
@@ -938,9 +940,8 @@ the disk, loads them into its running memory, and displays the contents
 in a buffer.  This buffer now has as its data the contents of the file
 and anything else that can be extracted therefrom.  Each character
 exists at a given position, which is a number.  The function ‘point’
-function gives you the numeric position at the point you are on, which
-typically corresponds to where the cursor is (*note Evaluate Emacs
-Lisp::).
+gives you the numeric position at the point you are on, which typically
+corresponds to where the cursor is (*note Evaluate Emacs Lisp::).
 
    At the beginning of a buffer, ‘point’ returns the value of ‘1’ (*note
 Side effect and return value: Side effect and return value.).  There are
@@ -994,15 +995,15 @@ Associate variables with a given buffer
      quoting: Symbols balanced expressions and quoting.).
 
    The latter point is perhaps the most open-ended one.  Buffers are
-like a bundle of variables, which includes their contents, any overlays
-or text properties associated with the contents, the active major mode,
-any active minor modes, and all the buffer-local values of other
-variables (*note What are major and minor modes::).  In the following
-code block, I am using the ‘seq-filter’ function to iterate through the
-return value of the function ‘buffer-list’ to get a list of buffers that
-(i) are not hidden from the user's view and (ii) have ‘text-mode’ as
-their major mode or a derivative thereof (*note Mapping over a list of
-elements::).
+like a bundle of variables.  This bundle includes their contents, any
+overlays or text properties associated with the contents, the active
+major mode, any active minor modes, and all the buffer-local values of
+other variables (*note What are major and minor modes::).  In the
+following code block, I am using the ‘seq-filter’ function to iterate
+through the return value of the function ‘buffer-list’ to get a list of
+buffers that (i) are not hidden from the user's view and (ii) have
+‘text-mode’ as their major mode or a derivative thereof (*note Mapping
+over a list of elements::).
 
      (seq-filter
       (lambda (buffer)
@@ -1056,7 +1057,7 @@ object known as a "face".
    Faces are constructs of the Emacs display engine that bundle together
 typography and colour attributes, such as the font family and weight, as
 well as foreground and background hues.  Every piece of text uses the
-‘default’ face at minimum.  Whenever an colour is present or some other
+‘default’ face at minimum.  Whenever a colour is present or some other
 typographic style, then there are more faces present.
 
    To get a ‘*Help*’ buffer with information about the text properties
@@ -1146,23 +1147,23 @@ and return value::).  Consider these:
 
      ;; What is the value of the symbol `my-name', where the symbol is a variable?
      (symbol-value 'my-name)
-     ;; => "Prot"
+     ;; => "Protesilaos"
 
      ;; What is the value of the variable `my-name' if I do not quote it?
      my-name
-     ;; => "Prot"
+     ;; => "Protesilaos"
 
    Similarly, we can get the function value of a symbol by calling
 ‘symbol-function’:
 
      (defun my-hello (person)
        "Say hello to PERSON."
-       (meesage "Hello %s" person))
+       (message "Hello %s" person))
      ;; => my-hello
 
      ;; What is the symbol `my-hello' as a function?
      (symbol-function 'my-hello)
-     ;; => #[(person) ((meesage "Hello %s" person)) nil nil "Say hello to PERSON."]
+     ;; => #[(person) ((message "Hello %s" person)) nil nil "Say hello to PERSON."]
 
      ;; What happens if I call `my-hello' without parentheses and/or a quote?
      my-hello
@@ -1300,7 +1301,7 @@ bound to.  Beside these technicalities, we have some ‘setq-local’ and
 ‘add-hook’ calls that also have a local scope (*note Hooks and the
 advice mechanism::).
 
-   What you learn from studying the definition of ‘text-mode’ is that is
+   What you learn from studying the definition of ‘text-mode’ is that it
 effectively is a bundle of settings.  By setting a buffer to use the
 major mode ‘text-mode’, we are practically opting in to those settings.
 If you create a new buffer, whose major mode is ‘fundamental-mode’ by
@@ -1352,8 +1353,8 @@ though they generally combine harmoniously.  For example, Emacs comes
 with lots of useful minor modes out-of-the-box.  One of them highlights
 the current line.  It is called ‘hl-line-mode’.  Another displays line
 numbers on the side of the window: its symbol is
-‘display-line-numbers-mode’.  Those can work together in a buffer
-together with other minor modes, such as ‘show-paren-mode’, that
+‘display-line-numbers-mode’.  Those can work together in a buffer in
+conjunction with other minor modes, such as ‘show-paren-mode’, that
 highlights matching parentheses, and ‘electric-pair-mode’ that inserts
 certain characters as pairs, like double quotes and parentheses.
 Because minor modes usually have complementary functionality, they are
@@ -1361,7 +1362,7 @@ designed to work both locally and globally.  Whatever conflicts are up
 to the user to resolve.
 
    Otherwise, minor modes follow the rationale of major modes: they are
-commands that typically set some variables (not to imply they are simply
+commands that typically set some variables (not to imply they are simple
 though, as they can do anything they want).  Since minor modes can, in
 principle, coexist, calling their command with ‘M-x’
 (‘execute-extended-command’) toggles them on and off.  Such a switch
@@ -1443,7 +1444,7 @@ passing a non-‘nil’ argument to the ‘LOCAL’ parameter of ‘add-hook’,
 we learn from its documentation (*note Introspecting Emacs::):
 
      (defun my-display-line-numbers-toggle ()
-       "Enable `display-line-numbers-mode' is `hl-line-mode' is active.
+       "Enable `display-line-numbers-mode' if `hl-line-mode' is active.
      Else disable `display-line-numbers-mode'."
        (if hl-line-mode
            (display-line-numbers-mode 1)
@@ -1483,7 +1484,7 @@ parameters are not the same:
 
    Thus far we have examined "normal hooks", i.e.  hooks whose functions
 are called without any arguments.  By convention, a normal hook has the
-‘-hook’ prefix.  "Abnormal hooks" are called with one or more arguments.
+‘-hook’ suffix.  "Abnormal hooks" are called with one or more arguments.
 Each hook decides how many those are and what they are expected to be.
 Abnormal hooks have the suffix ‘-functions’.  The ‘add-hook’ and
 ‘remove-hook’ work the same way for abnormal hooks.  What is different
@@ -1698,7 +1699,7 @@ the backtick character or back quote or grave accent, to write an
 expression that is "quasi quoted".  The backtick behaves like the single
 quote except for anything that is preceded by a comma.  The comma only
 has meaning inside of a quasi quoted list, otherwise you get an error.
-The comma is an instruction to "evaluate the thing that follows".  It
+The comma is an instruction to "evaluate the thing that follows".  It is
 written as a prefix without a space after it and applies to the thing it
 is attached to.  The "thing" that follows is either a symbol or a list.
 The list can, of course, be a function call of arbitrary complexity.
@@ -1710,13 +1711,13 @@ everything as a list:
 
    Do not forget that you will get an error if you are not quoting this
 list at all, because the first element ‘one’ will be treated as the
-symbol a function, which must then be called with all other elements as
-its arguments.  Chances are that ‘one’ is not defined as a function in
-your current Emacs session or those arguments are not meaningful to it,
-anyway.  Plus, ‘two’ and ‘four’ will then have to exist as variables,
-since they are not quoted either.  Else more errors ensue.  By quasi
-quoting the list, we get the best of both worlds: evaluate what we need
-and skip the evaluation of all the rest.
+symbol of a defined function, which must then be called with all other
+elements as its arguments.  Chances are that ‘one’ is not defined as a
+function in your current Emacs session or those arguments are not
+meaningful to it, anyway.  Plus, ‘two’ and ‘four’ will then have to
+exist as variables, since they are not quoted either.  Else more errors
+ensue.  By quasi quoting the list, we get the best of both worlds:
+evaluate what we need and skip the evaluation of all the rest.
 
    Other than the comma operator, there is the ‘,@’ (how is this even
 pronounced?  "comma at", perhaps?), which is notation for "splicing".
@@ -1754,9 +1755,9 @@ so she said "It is all Greek to me".  Not knowing that her answer is an
 idiom for "I do not understand you", I blithely replied, "Yes, madame,
 Greek; me no speak England very best."  I was not actually a beginner at
 the time.  I simply could not pass on the opportunity to make fun of the
-situation.  Just how you should remember to enjoy the time spent
-tinkering with Emacs.  But enough of that!  Back to the elements of
-Emacs Lisp.
+situation.  This illustrates how you should remember to enjoy the time
+spent tinkering with Emacs.  But enough of that!  Back to the elements
+of Emacs Lisp.
 
 
 File: elispelem.info,  Node: Evaluation inside of a macro or special form,  Next: Mapping over a list of elements,  Prev: Evaluate some elements inside of a list,  Up: Top
@@ -2935,8 +2936,8 @@ this is where the ‘pcase’ Lisp macro comes in (*note Evaluation inside
 of a macro or special form::).  At its more basic formulation, it is
 like ‘cond’, in that it tests the return value of a given expression
 against a list of conditions.  Unlike ‘cond’, it can perform pattern
-matching and create binding that it can then used based on the pattern
-it is matching.
+matching and create binding that it can then use based on the pattern it
+is matching.
 
    Let me show you how ‘pcase’ works like a ‘cond’.  Here is an example
 that compares the buffer-local value of the variable ‘major-mode’ for
@@ -3187,7 +3188,7 @@ desired outcome.
 the ‘error’ function (it technically is the ‘signal’ function with the
 ‘error’ type).  When that happens, you are presented with a backtrace
 and Emacs enters a "recursive edit".  The recursive edit means that
-unwinding forms are suspend until you either type ‘C-]’
+unwinding forms are suspended until you either type ‘C-]’
 (‘abort-recursive-edit’) or select the window with the ‘*Backtrace*’
 buffer and do ‘q’ (‘debugger-quit’) from there.  Emacs can enter more
 than one such recursive edit.  While you are inside one, no more
@@ -3568,7 +3569,7 @@ correctly.  Do it right and you will end up with a rich corpus of
 functions that are equally useful to programs and to users.
 
 
-File: elispelem.info,  Node: Emacs as a computing environment,  Next: GNU Free Documentation License,  Prev: Make your interactive function also work from Lisp calls,  Up: Top
+File: elispelem.info,  Node: Emacs as a computing environment,  Next: Acknowledgements,  Prev: Make your interactive function also work from Lisp calls,  Up: Top
 
 24 Emacs as a computing environment
 ***********************************
@@ -3643,7 +3644,18 @@ Emacs is for you in present time and in terms of sheer potential.  Have
 fun!
 
 
-File: elispelem.info,  Node: GNU Free Documentation License,  Next: Indices,  Prev: Emacs as a computing environment,  Up: Top
+File: elispelem.info,  Node: Acknowledgements,  Next: GNU Free Documentation License,  Prev: Emacs as a computing environment,  Up: Top
+
+25 Acknowledgements
+*******************
+
+Thanks to the following people for fixing typos and spotting other such
+mistakes:
+
+   Laurent Gatto, Nicolas Semrau, slackline.
+
+
+File: elispelem.info,  Node: GNU Free Documentation License,  Next: Indices,  Prev: Acknowledgements,  Up: Top
 
 Appendix A GNU Free Documentation License
 *****************************************
@@ -4165,10 +4177,10 @@ B.1 Function index
                                                               (line 191)
 * apply:                                 Hooks and the advice mechanism.
                                                               (line 216)
-* buffer-list:                           Buffers as data.     (line  67)
-* buffer-string:                         Buffers as data.     (line  26)
-* buffer-substring:                      Buffers as data.     (line  26)
-* buffer-substring-no-properties:        Buffers as data.     (line  26)
+* buffer-list:                           Buffers as data.     (line  66)
+* buffer-string:                         Buffers as data.     (line  25)
+* buffer-substring:                      Buffers as data.     (line  25)
+* buffer-substring-no-properties:        Buffers as data.     (line  25)
 * car:                                   Symbols balanced expressions and quoting.
                                                               (line  80)
 * cdr:                                   Symbols balanced expressions and quoting.
@@ -4208,21 +4220,21 @@ B.1 Function index
 * defun <2>:                             Make your interactive function also work from Lisp calls.
                                                               (line  55)
 * defvar:                                Introspecting Emacs. (line  29)
-* delete-region:                         Buffers as data.     (line  37)
+* delete-region:                         Buffers as data.     (line  36)
 * describe-char:                         Text has its own properties.
                                                               (line   6)
-* describe-function:                     Evaluate Emacs Lisp. (line 131)
+* describe-function:                     Evaluate Emacs Lisp. (line 132)
 * describe-function <1>:                 Introspecting Emacs. (line  69)
-* describe-key:                          Evaluate Emacs Lisp. (line 131)
+* describe-key:                          Evaluate Emacs Lisp. (line 132)
 * describe-key <1>:                      Introspecting Emacs. (line  69)
-* describe-keymap:                       Evaluate Emacs Lisp. (line 131)
+* describe-keymap:                       Evaluate Emacs Lisp. (line 132)
 * describe-keymap <1>:                   Introspecting Emacs. (line  69)
-* describe-symbol:                       Evaluate Emacs Lisp. (line 131)
+* describe-symbol:                       Evaluate Emacs Lisp. (line 132)
 * describe-symbol <1>:                   Introspecting Emacs. (line  69)
-* describe-variable:                     Evaluate Emacs Lisp. (line 131)
+* describe-variable:                     Evaluate Emacs Lisp. (line 132)
 * describe-variable <1>:                 Introspecting Emacs. (line   6)
 * describe-variable <2>:                 Introspecting Emacs. (line  69)
-* display-buffer:                        Buffers as data.     (line  37)
+* display-buffer:                        Buffers as data.     (line  36)
 * display-line-numbers-mode:             What are major and minor modes.
                                                               (line 104)
 * dolist:                                Mapping over a list of elements.
@@ -4239,18 +4251,18 @@ B.1 Function index
                                                               (line 104)
 * eobp:                                  Basic control flow with if cond and others.
                                                               (line  29)
-* erase-buffer:                          Buffers as data.     (line  37)
+* erase-buffer:                          Buffers as data.     (line  36)
 * error:                                 Run some code or fall back to some other code.
                                                               (line 100)
 * error <1>:                             Run some code or fall back to some other code.
                                                               (line 139)
-* eval-buffer:                           Evaluate Emacs Lisp. (line  60)
-* eval-expression:                       Evaluate Emacs Lisp. (line  90)
-* eval-last-sexp:                        Evaluate Emacs Lisp. (line  60)
-* eval-last-sexp <1>:                    Evaluate Emacs Lisp. (line 123)
-* eval-print-last-sexp:                  Evaluate Emacs Lisp. (line 123)
-* eval-region:                           Evaluate Emacs Lisp. (line  60)
-* execute-extended-command:              Evaluate Emacs Lisp. (line  52)
+* eval-buffer:                           Evaluate Emacs Lisp. (line  61)
+* eval-expression:                       Evaluate Emacs Lisp. (line  91)
+* eval-last-sexp:                        Evaluate Emacs Lisp. (line  61)
+* eval-last-sexp <1>:                    Evaluate Emacs Lisp. (line 124)
+* eval-print-last-sexp:                  Evaluate Emacs Lisp. (line 124)
+* eval-region:                           Evaluate Emacs Lisp. (line  61)
+* execute-extended-command:              Evaluate Emacs Lisp. (line  53)
 * find-library:                          Mapping over a list of elements.
                                                               (line 169)
 * find-library <1>:                      Autoloading symbols. (line  45)
@@ -4260,13 +4272,13 @@ B.1 Function index
                                                               (line 253)
 * fundamental-mode:                      What are major and minor modes.
                                                               (line  58)
-* get-buffer:                            Buffers as data.     (line  37)
-* get-buffer-create:                     Buffers as data.     (line  37)
+* get-buffer:                            Buffers as data.     (line  36)
+* get-buffer-create:                     Buffers as data.     (line  36)
 * hl-line-mode:                          What are major and minor modes.
                                                               (line 104)
 * hl-line-mode <1>:                      Hooks and the advice mechanism.
                                                               (line  55)
-* ielm:                                  Evaluate Emacs Lisp. (line 115)
+* ielm:                                  Evaluate Emacs Lisp. (line 116)
 * if:                                    Basic control flow with if cond and others.
                                                               (line  19)
 * if <1>:                                Basic control flow with if cond and others.
@@ -4298,7 +4310,7 @@ B.1 Function index
 * let* <1>:                              Pattern match with pcase and related.
                                                               (line 101)
 * line-beginning-position:               Buffers as data.     (line   6)
-* lisp-interaction-mode:                 Evaluate Emacs Lisp. (line 123)
+* lisp-interaction-mode:                 Evaluate Emacs Lisp. (line 124)
 * list:                                  Symbols balanced expressions and quoting.
                                                               (line  97)
 * list <1>:                              Evaluate some elements inside of a list.
@@ -4370,7 +4382,7 @@ B.1 Function index
 * point-min:                             Buffers as data.     (line   6)
 * point-min <1>:                         Switching to another buffer window or narrowed state.
                                                               (line  32)
-* pop-to-buffer:                         Buffers as data.     (line  37)
+* pop-to-buffer:                         Buffers as data.     (line  36)
 * pp-macroexpand-last-sexp:              Symbols balanced expressions and quoting.
                                                               (line 244)
 * pp-macroexpand-last-sexp <1>:          Evaluation inside of a macro or special form.
@@ -4414,7 +4426,7 @@ B.1 Function index
                                                               (line 139)
 * select-window:                         Switching to another buffer window or narrowed state.
                                                               (line  24)
-* seq-filter:                            Buffers as data.     (line  67)
+* seq-filter:                            Buffers as data.     (line  66)
 * seq-filter <1>:                        Mapping over a list of elements.
                                                               (line   6)
 * seq-find:                              Mapping over a list of elements.
@@ -4433,7 +4445,7 @@ B.1 Function index
                                                               (line  57)
 * setq <1>:                              Evaluation inside of a macro or special form.
                                                               (line  79)
-* setq-local:                            Buffers as data.     (line  53)
+* setq-local:                            Buffers as data.     (line  52)
 * setq-local <1>:                        What are major and minor modes.
                                                               (line  45)
 * shortdoc:                              Text has its own properties.
@@ -4504,7 +4516,7 @@ B.1 Function index
                                                               (line   6)
 * widen:                                 Switching to another buffer window or narrowed state.
                                                               (line  32)
-* with-current-buffer:                   Buffers as data.     (line  37)
+* with-current-buffer:                   Buffers as data.     (line  36)
 * with-temp-buffer:                      Run some code or fall back to some other code.
                                                               (line 139)
 * y-or-n-p:                              Run some code or fall back to some other code.
@@ -4521,17 +4533,17 @@ B.2 Variable index
 
 * before-save-hook:                      Hooks and the advice mechanism.
                                                               (line  20)
-* buffer-file-name:                      Evaluate Emacs Lisp. (line  81)
-* buffer-file-name <1>:                  Buffers as data.     (line  53)
-* buffer-list:                           Buffers as data.     (line  53)
+* buffer-file-name:                      Evaluate Emacs Lisp. (line  82)
+* buffer-file-name <1>:                  Buffers as data.     (line  52)
+* buffer-list:                           Buffers as data.     (line  52)
 * current-prefix-arg:                    Make your interactive function also work from Lisp calls.
                                                               (line  94)
-* default-directory:                     Buffers as data.     (line  53)
+* default-directory:                     Buffers as data.     (line  52)
 * default-directory <1>:                 Evaluation inside of a macro or special form.
                                                               (line 164)
 * error:                                 Run some code or fall back to some other code.
                                                               (line  30)
-* fill-column:                           Buffers as data.     (line  53)
+* fill-column:                           Buffers as data.     (line  52)
 * font-lock-defaults:                    Text has its own properties.
                                                               (line  69)
 * font-lock-keywords:                    Text has its own properties.
@@ -4540,9 +4552,9 @@ B.2 Variable index
                                                               (line  55)
 * hl-line-mode-hook:                     Hooks and the advice mechanism.
                                                               (line  37)
-* initial-major-mode:                    Evaluate Emacs Lisp. (line 123)
+* initial-major-mode:                    Evaluate Emacs Lisp. (line 124)
 * load-path:                             Autoloading symbols. (line   6)
-* major-mode:                            Evaluate Emacs Lisp. (line 131)
+* major-mode:                            Evaluate Emacs Lisp. (line 132)
 * major-mode <1>:                        What are major and minor modes.
                                                               (line  68)
 * major-mode <2>:                        Pattern match with pcase and related.
@@ -4602,20 +4614,20 @@ B.3 Concept index
                                                               (line   6)
 * Get match data without text properties: The match data of the last search.
                                                               (line  15)
-* Hidden buffers:                        Buffers as data.     (line  67)
+* Hidden buffers:                        Buffers as data.     (line  66)
 * Indentation in Emacs Lisp:             Basic control flow with if cond and others.
                                                               (line  60)
-* Interactive functions are commands:    Evaluate Emacs Lisp. (line  35)
+* Interactive functions are commands:    Evaluate Emacs Lisp. (line  36)
 * Interactive functions are commands <1>: Make your interactive function also work from Lisp calls.
                                                               (line   6)
-* Introspect Emacs Lisp:                 Evaluate Emacs Lisp. (line 131)
+* Introspect Emacs Lisp:                 Evaluate Emacs Lisp. (line 132)
 * Lazy loading Emacs Lisp code:          Autoloading symbols. (line  24)
 * Let bind variables in the current scope: Control flow with if-let* and friends.
                                                               (line   6)
 * Lisp languages are all about lists:    Symbols balanced expressions and quoting.
                                                               (line  54)
 * M-x shows evaluated or autoloaded commands: Evaluate Emacs Lisp.
-                                                              (line  52)
+                                                              (line  53)
 * Major modes have a hook, keymap, syntax table, abbrev table, and parent mode: What are major and minor modes.
                                                               (line  68)
 * Major modes work with buffer-local variables: What are major and minor modes.
@@ -4716,35 +4728,36 @@ B.3 Concept index
 
 Tag Table:
 Node: Top841
-Node: Getting started with Emacs Lisp3206
-Node: Basics of how Lisp works6809
-Node: Evaluate Emacs Lisp17728
-Node: Introspecting Emacs26066
-Node: Side effect and return value30849
-Node: Symbols balanced expressions and quoting33738
-Node: Buffers as data46831
-Node: Text has its own properties53022
-Node: Add metadata to symbols57649
-Node: What are major and minor modes63206
-Node: Hooks and the advice mechanism72345
-Node: Evaluate some elements inside of a list84005
-Node: Evaluation inside of a macro or special form90469
-Node: Mapping over a list of elements104314
-Node: The match data of the last search111727
-Node: Switching to another buffer window or narrowed state117136
-Node: Basic control flow with if cond and others120384
-Node: Control flow with if-let* and friends130551
-Node: Autoloading symbols136427
-Node: Pattern match with pcase and related143509
-Node: Run some code or fall back to some other code152148
-Node: When to use a named function or a lambda function165176
-Node: Make your interactive function also work from Lisp calls169349
-Node: Emacs as a computing environment176754
-Node: GNU Free Documentation License181080
-Node: Indices206256
-Node: Function index206432
-Node: Variable index234479
-Node: Concept index237198
+Node: Getting started with Emacs Lisp3227
+Node: Basics of how Lisp works6830
+Node: Evaluate Emacs Lisp17749
+Node: Introspecting Emacs26113
+Node: Side effect and return value30896
+Node: Symbols balanced expressions and quoting33785
+Node: Buffers as data46878
+Node: Text has its own properties53067
+Node: Add metadata to symbols57693
+Node: What are major and minor modes63264
+Node: Hooks and the advice mechanism72409
+Node: Evaluate some elements inside of a list84069
+Node: Evaluation inside of a macro or special form90559
+Node: Mapping over a list of elements104404
+Node: The match data of the last search111817
+Node: Switching to another buffer window or narrowed state117226
+Node: Basic control flow with if cond and others120474
+Node: Control flow with if-let* and friends130641
+Node: Autoloading symbols136517
+Node: Pattern match with pcase and related143599
+Node: Run some code or fall back to some other code152237
+Node: When to use a named function or a lambda function165267
+Node: Make your interactive function also work from Lisp calls169440
+Node: Emacs as a computing environment176845
+Node: Acknowledgements181157
+Node: GNU Free Documentation License181466
+Node: Indices206626
+Node: Function index206802
+Node: Variable index234849
+Node: Concept index237568
 
 End Tag Table
 

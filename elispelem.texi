@@ -87,6 +87,7 @@ Git repository: @uref{https://github.com/protesilaos/emacs-lisp-elements}
 * When to use a named function or a lambda function::
 * Make your interactive function also work from Lisp calls::
 * Emacs as a computing environment::
+* Acknowledgements::
 * GNU Free Documentation License::
 * Indices::
 
@@ -448,16 +449,16 @@ potential inspection, modification, and redistribution (@ref{Introspecting Emacs
 Nothing is hidden from you. While the uniform extensibility
 through Emacs Lisp means that the code you are reading and the code
 you are writing are treated the same way. You do not need to learn
-different, typically incompatible programming languages or
-configuration formats, to make Emacs perform the computations you
+different, typically incompatible, programming languages or
+configuration formats to make Emacs perform the computations you
 want. Emacs Lisp is all there is.
 
 Freedom and uniformity of computation together give you maximum
 control over your text editor (@ref{Emacs as a computing environment}). The
 promise, then, is that learning to program in Elisp grants you access
 to the full power of Emacs, such that you do exactly what you want
-with it, give some basic concepts such as buffers and text
-manipulation (@ref{Buffers as data}).
+with it, given that you also understand some basic concepts such as
+buffers and text manipulation (@ref{Buffers as data}).
 
 @cindex Interactive functions are commands
 You type a key on your keyboard and a character is written to the
@@ -1050,8 +1051,8 @@ the disk, loads them into its running memory, and displays the
 contents in a buffer. This buffer now has as its data the contents of
 the file and anything else that can be extracted therefrom. Each
 character exists at a given position, which is a number. The function
-@code{point} function gives you the numeric position at the point you are
-on, which typically corresponds to where the cursor is (@ref{Evaluate Emacs Lisp}).
+@code{point} gives you the numeric position at the point you are on, which
+typically corresponds to where the cursor is (@ref{Evaluate Emacs Lisp}).
 
 At the beginning of a buffer, @code{point} returns the value of @samp{1} (@ref{Side effect and return value, , Side
 effect and return value}). There are plenty of functions that return a
@@ -1128,14 +1129,14 @@ variable (@ref{Symbols balanced expressions and quoting, , Symbols@comma{} balan
 @findex buffer-list
 @cindex Hidden buffers
 The latter point is perhaps the most open-ended one. Buffers are like
-a bundle of variables, which includes their contents, any overlays or
-text properties associated with the contents, the active major mode,
-any active minor modes, and all the buffer-local values of other
-variables (@ref{What are major and minor modes}). In the following code
-block, I am using the @code{seq-filter} function to iterate through the
-return value of the function @code{buffer-list} to get a list of buffers
-that (i) are not hidden from the user's view and (ii) have @code{text-mode}
-as their major mode or a derivative thereof (@ref{Mapping over a list of elements}).
+a bundle of variables. This bundle includes their contents, any
+overlays or text properties associated with the contents, the active
+major mode, any active minor modes, and all the buffer-local values of
+other variables (@ref{What are major and minor modes}). In the following
+code block, I am using the @code{seq-filter} function to iterate through
+the return value of the function @code{buffer-list} to get a list of
+buffers that (i) are not hidden from the user's view and (ii) have
+@code{text-mode} as their major mode or a derivative thereof (@ref{Mapping over a list of elements}).
 
 @lisp
 (seq-filter
@@ -1193,7 +1194,7 @@ a ``face''.
 Faces are constructs of the Emacs display engine that bundle together
 typography and colour attributes, such as the font family and weight,
 as well as foreground and background hues. Every piece of text uses
-the @code{default} face at minimum. Whenever an colour is present or some
+the @code{default} face at minimum. Whenever a colour is present or some
 other typographic style, then there are more faces present.
 
 To get a @samp{*Help*} buffer with information about the text properties
@@ -1290,11 +1291,11 @@ quote or by passing its symbol as an argument to the function
 
 ;; What is the value of the symbol `my-name', where the symbol is a variable?
 (symbol-value 'my-name)
-;; => "Prot"
+;; => "Protesilaos"
 
 ;; What is the value of the variable `my-name' if I do not quote it?
 my-name
-;; => "Prot"
+;; => "Protesilaos"
 @end lisp
 
 @findex symbol-function
@@ -1303,12 +1304,12 @@ Similarly, we can get the function value of a symbol by calling @code{symbol-fun
 @lisp
 (defun my-hello (person)
   "Say hello to PERSON."
-  (meesage "Hello %s" person))
+  (message "Hello %s" person))
 ;; => my-hello
 
 ;; What is the symbol `my-hello' as a function?
 (symbol-function 'my-hello)
-;; => #[(person) ((meesage "Hello %s" person)) nil nil "Say hello to PERSON."]
+;; => #[(person) ((message "Hello %s" person)) nil nil "Say hello to PERSON."]
 
 ;; What happens if I call `my-hello' without parentheses and/or a quote?
 my-hello
@@ -1473,7 +1474,7 @@ and @code{add-hook} calls that also have a local scope (@ref{Hooks and the advic
 
 @cindex The default major mode is Fundamental mode
 @findex fundamental-mode
-What you learn from studying the definition of @code{text-mode} is that is
+What you learn from studying the definition of @code{text-mode} is that it
 effectively is a bundle of settings. By setting a buffer to use the
 major mode @code{text-mode}, we are practically opting in to those
 settings. If you create a new buffer, whose major mode is
@@ -1535,16 +1536,17 @@ though they generally combine harmoniously. For example, Emacs comes
 with lots of useful minor modes out-of-the-box. One of them highlights
 the current line. It is called @code{hl-line-mode}. Another displays line
 numbers on the side of the window: its symbol is @code{display-line-numbers-mode}.
-Those can work together in a buffer together with other minor modes,
-such as @code{show-paren-mode}, that highlights matching parentheses, and
-@code{electric-pair-mode} that inserts certain characters as pairs, like
-double quotes and parentheses. Because minor modes usually have
-complementary functionality, they are designed to work both locally
-and globally. Whatever conflicts are up to the user to resolve.
+Those can work together in a buffer in conjunction with other minor
+modes, such as @code{show-paren-mode}, that highlights matching
+parentheses, and @code{electric-pair-mode} that inserts certain characters
+as pairs, like double quotes and parentheses. Because minor modes
+usually have complementary functionality, they are designed to work
+both locally and globally. Whatever conflicts are up to the user to
+resolve.
 
 Otherwise, minor modes follow the rationale of major modes: they are
 commands that typically set some variables (not to imply they are
-simply though, as they can do anything they want). Since minor modes
+simple though, as they can do anything they want). Since minor modes
 can, in principle, coexist, calling their command with @kbd{M-x}
 (@code{execute-extended-command}) toggles them on and off. Such a switch
 would not be of much use for major modes: it would be the same as
@@ -1631,7 +1633,7 @@ learn from its documentation (@ref{Introspecting Emacs}):
 
 @lisp
 (defun my-display-line-numbers-toggle ()
-  "Enable `display-line-numbers-mode' is `hl-line-mode' is active.
+  "Enable `display-line-numbers-mode' if `hl-line-mode' is active.
 Else disable `display-line-numbers-mode'."
   (if hl-line-mode
       (display-line-numbers-mode 1)
@@ -1682,7 +1684,7 @@ parameters are not the same:
 
 Thus far we have examined ``normal hooks'', i.e. hooks whose functions
 are called without any arguments. By convention, a normal hook has the
-@samp{-hook} prefix. ``Abnormal hooks'' are called with one or more
+@samp{-hook} suffix. ``Abnormal hooks'' are called with one or more
 arguments. Each hook decides how many those are and what they are
 expected to be. Abnormal hooks have the suffix @samp{-functions}. The
 @code{add-hook} and @code{remove-hook} work the same way for abnormal hooks.
@@ -1923,10 +1925,10 @@ expression that is ``quasi quoted''. The backtick behaves like the
 single quote except for anything that is preceded by a comma. The
 comma only has meaning inside of a quasi quoted list, otherwise you
 get an error. The comma is an instruction to ``evaluate the thing that
-follows''. It written as a prefix without a space after it and applies
-to the thing it is attached to. The ``thing'' that follows is either a
-symbol or a list. The list can, of course, be a function call of
-arbitrary complexity. Let me then use @code{concat} to greet a certain
+follows''. It is written as a prefix without a space after it and
+applies to the thing it is attached to. The ``thing'' that follows is
+either a symbol or a list. The list can, of course, be a function call
+of arbitrary complexity. Let me then use @code{concat} to greet a certain
 person all while returning everything as a list:
 
 @lisp
@@ -1936,13 +1938,13 @@ person all while returning everything as a list:
 
 Do not forget that you will get an error if you are not quoting this
 list at all, because the first element @code{one} will be treated as the
-symbol a function, which must then be called with all other elements
-as its arguments. Chances are that @code{one} is not defined as a function
-in your current Emacs session or those arguments are not meaningful to
-it, anyway. Plus, @code{two} and @code{four} will then have to exist as
-variables, since they are not quoted either. Else more errors ensue.
-By quasi quoting the list, we get the best of both worlds: evaluate
-what we need and skip the evaluation of all the rest.
+symbol of a defined function, which must then be called with all other
+elements as its arguments. Chances are that @code{one} is not defined as a
+function in your current Emacs session or those arguments are not
+meaningful to it, anyway. Plus, @code{two} and @code{four} will then have to
+exist as variables, since they are not quoted either. Else more errors
+ensue. By quasi quoting the list, we get the best of both worlds:
+evaluate what we need and skip the evaluation of all the rest.
 
 @cindex Splicing in general
 Other than the comma operator, there is the @samp{,@@} (how is this even
@@ -1981,9 +1983,9 @@ English, so she said ``It is all Greek to me''. Not knowing that her
 answer is an idiom for ``I do not understand you'', I blithely replied,
 ``Yes, madame, Greek; me no speak England very best.'' I was not
 actually a beginner at the time. I simply could not pass on the
-opportunity to make fun of the situation. Just how you should remember
-to enjoy the time spent tinkering with Emacs. But enough of that! Back
-to the elements of Emacs Lisp.
+opportunity to make fun of the situation. This illustrates how you
+should remember to enjoy the time spent tinkering with Emacs. But
+enough of that! Back to the elements of Emacs Lisp.
 
 @node Evaluation inside of a macro or special form
 @chapter Evaluation inside of a macro or special form
@@ -3380,7 +3382,7 @@ any rate, this is where the @code{pcase} Lisp macro comes in (@ref{Evaluation in
 At its more basic formulation, it is like @code{cond}, in that it tests the
 return value of a given expression against a list of conditions.
 Unlike @code{cond}, it can perform pattern matching and create binding that
-it can then used based on the pattern it is matching.
+it can then use based on the pattern it is matching.
 
 Let me show you how @code{pcase} works like a @code{cond}. Here is an example
 that compares the buffer-local value of the variable @code{major-mode} for
@@ -3671,7 +3673,7 @@ In practice, your code may encounter an error, which is produced by
 the @code{error} function (it technically is the @code{signal} function with the
 @code{error} type). When that happens, you are presented with a backtrace
 and Emacs enters a ``recursive edit''. The recursive edit means that
-unwinding forms are suspend until you either type @kbd{C-]}
+unwinding forms are suspended until you either type @kbd{C-]}
 (@code{abort-recursive-edit}) or select the window with the @samp{*Backtrace*}
 buffer and do @kbd{q} (@code{debugger-quit}) from there. Emacs can
 enter more than one such recursive edit. While you are inside one, no
@@ -4168,6 +4170,14 @@ script) is the current Emacs process.
 Use this concept to better understand what the value proposition of
 Emacs is for you in present time and in terms of sheer potential. Have
 fun!
+
+@node Acknowledgements
+@chapter Acknowledgements
+
+Thanks to the following people for fixing typos and spotting other
+such mistakes:
+
+Laurent Gatto, Nicolas Semrau, slackline.
 
 @node GNU Free Documentation License
 @appendix GNU Free Documentation License
