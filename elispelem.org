@@ -4097,7 +4097,7 @@ fun!
 Thanks to the following people for fixing typos and spotting other
 such mistakes:
 
-Laurent Gatto, Nicolas Semrau, slackline.
+Laurent Gatto, Nicolas Semrau, slackline, eNotchy.
 
 * COPYING
 :PROPERTIES:
