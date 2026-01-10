@@ -1013,7 +1013,7 @@ some of the following:
   existing buffer, you might use the ~with-current-buffer~ macro to
   temporarily switch to the buffer you are targetting and then either
   call the function ~erase-buffer~ to delete everything or limit the
-  deletion to the range betweeen two buffer positions with
+  deletion to the range between two buffer positions with
   ~delete-region~. Finally, the functions ~display-buffer~ or
   ~pop-to-buffer~ will place the buffer in an Emacs window. When you
   present data, you may also choose to have some specialised major
@@ -3271,7 +3271,7 @@ autoload mechanism. Once you invoke a command, Emacs will take care to
 load the corresponding file and then perform whatever computation the
 command specifies ([[#h:make-your-interactive-function-also-work-from-lisp-calls][Make your interactive function also work from Lisp calls]]).
 
-What is usually autoloaded are commnads, though variables can be
+What is usually autoloaded are commands, though variables can be
 handled the same way. It all depends on what the program is doing.
 
 * Pattern match with ~pcase~ and related
@@ -3367,7 +3367,7 @@ main features of the DSL now under consideration:
 
 Go ahead and evaluate that function and then try it out ([[#h:evaluate-emacs-lisp][Evaluate Emacs Lisp]]).
 What it showcases is the various ways we write the cases that ~pcase~
-checks for. You wil notice the use of the backtick and the comma,
+checks for. You will notice the use of the backtick and the comma,
 which is similar to the quasi quoting I have covered before ([[#h:partial-evaluation-inside-of-a-list][Evaluate some elements inside of a list]]).
 Those perform the pattern matching against the expression that is
 given to ~pcase~, in this case the =argument=. If the pattern matches,
