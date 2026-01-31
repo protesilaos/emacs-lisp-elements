@@ -3186,7 +3186,7 @@ called (or the entire feature is explicitly loaded by the user or
 another program). This is the correct way to organise the code of a
 program.
 
-From the programmer's persective, autoloading is set up with those
+From the programmer's perspective, autoloading is set up with those
 special =;;;###autoload= comments. For example:
 
 #+begin_src emacs-lisp
