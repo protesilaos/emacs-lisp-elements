@@ -974,7 +974,7 @@ Present the results of some operation
      use the ‘with-current-buffer’ macro to temporarily switch to the
      buffer you are targetting and then either call the function
      ‘erase-buffer’ to delete everything or limit the deletion to the
-     range betweeen two buffer positions with ‘delete-region’.  Finally,
+     range between two buffer positions with ‘delete-region’.  Finally,
      the functions ‘display-buffer’ or ‘pop-to-buffer’ will place the
      buffer in an Emacs window.  When you present data, you may also
      choose to have some specialised major mode that sets the
@@ -1023,7 +1023,7 @@ better to give a name to the ‘lambda’, i.e.  to define a function.  As
 such, we may write the following (*note When to use a named function or
 a lambda function::):
 
-     (defun my-buffer-visble-and-text-p (buffer)
+     (defun my-buffer-visible-and-text-p l(buffer)
        "Return BUFFER if it is visible and its major mode derives from `text-mode'."
        (with-current-buffer buffer
          ;; The convention for buffers which are not meant to be seen by
@@ -1032,7 +1032,7 @@ a lambda function::):
          (and (not (string-prefix-p " " (buffer-name buffer)))
               (derived-mode-p 'text-mode))))
 
-     (seq-filter #'my-buffer-visble-and-text-p (buffer-list))
+     (seq-filter #'my-buffer-visible-and-text-p (buffer-list))
 
    As with buffers, Emacs windows and frames have their own parameters.
 I will not cover those as their utility is more specialised and the
@@ -2838,7 +2838,7 @@ called (or the entire feature is explicitly loaded by the user or
 another program).  This is the correct way to organise the code of a
 program.
 
-   From the programmer's persective, autoloading is set up with those
+   From the programmer's perspective, autoloading is set up with those
 special ‘;;;###autoload’ comments.  For example:
 
      ;;;###autoload
@@ -2915,7 +2915,7 @@ command, Emacs will take care to load the corresponding file and then
 perform whatever computation the command specifies (*note Make your
 interactive function also work from Lisp calls::).
 
-   What is usually autoloaded are commnads, though variables can be
+   What is usually autoloaded are commands, though variables can be
 handled the same way.  It all depends on what the program is doing.
 
 
@@ -3002,7 +3002,7 @@ features of the DSL now under consideration:
 
    Go ahead and evaluate that function and then try it out (*note
 Evaluate Emacs Lisp::).  What it showcases is the various ways we write
-the cases that ‘pcase’ checks for.  You wil notice the use of the
+the cases that ‘pcase’ checks for.  You will notice the use of the
 backtick and the comma, which is similar to the quasi quoting I have
 covered before (*note Evaluate some elements inside of a list::).  Those
 perform the pattern matching against the expression that is given to
@@ -3652,7 +3652,7 @@ File: elispelem.info,  Node: Acknowledgements,  Next: GNU Free Documentation Lic
 Thanks to the following people for fixing typos and spotting other such
 mistakes:
 
-   Laurent Gatto, Nicolas Semrau, slackline.
+   José David Pernía, Laurent Gatto, Nicolas Semrau, slackline, eNotchy.
 
 
 File: elispelem.info,  Node: GNU Free Documentation License,  Next: Indices,  Prev: Acknowledgements,  Up: Top
@@ -4735,29 +4735,29 @@ Node: Introspecting Emacs26113
 Node: Side effect and return value30896
 Node: Symbols balanced expressions and quoting33785
 Node: Buffers as data46878
-Node: Text has its own properties53067
-Node: Add metadata to symbols57693
-Node: What are major and minor modes63264
-Node: Hooks and the advice mechanism72409
-Node: Evaluate some elements inside of a list84069
-Node: Evaluation inside of a macro or special form90559
-Node: Mapping over a list of elements104404
-Node: The match data of the last search111817
-Node: Switching to another buffer window or narrowed state117226
-Node: Basic control flow with if cond and others120474
-Node: Control flow with if-let* and friends130641
-Node: Autoloading symbols136517
-Node: Pattern match with pcase and related143599
-Node: Run some code or fall back to some other code152237
-Node: When to use a named function or a lambda function165267
-Node: Make your interactive function also work from Lisp calls169440
-Node: Emacs as a computing environment176845
-Node: Acknowledgements181157
-Node: GNU Free Documentation License181466
-Node: Indices206626
-Node: Function index206802
-Node: Variable index234849
-Node: Concept index237568
+Node: Text has its own properties53069
+Node: Add metadata to symbols57695
+Node: What are major and minor modes63266
+Node: Hooks and the advice mechanism72411
+Node: Evaluate some elements inside of a list84071
+Node: Evaluation inside of a macro or special form90561
+Node: Mapping over a list of elements104406
+Node: The match data of the last search111819
+Node: Switching to another buffer window or narrowed state117228
+Node: Basic control flow with if cond and others120476
+Node: Control flow with if-let* and friends130643
+Node: Autoloading symbols136519
+Node: Pattern match with pcase and related143602
+Node: Run some code or fall back to some other code152241
+Node: When to use a named function or a lambda function165271
+Node: Make your interactive function also work from Lisp calls169444
+Node: Emacs as a computing environment176849
+Node: Acknowledgements181161
+Node: GNU Free Documentation License181500
+Node: Indices206660
+Node: Function index206836
+Node: Variable index234883
+Node: Concept index237602
 
 End Tag Table
 

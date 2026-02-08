@@ -1098,7 +1098,7 @@ want to evaluate the function @code{get-buffer-create} or its more strict
 existing buffer, you might use the @code{with-current-buffer} macro to
 temporarily switch to the buffer you are targetting and then either
 call the function @code{erase-buffer} to delete everything or limit the
-deletion to the range betweeen two buffer positions with
+deletion to the range between two buffer positions with
 @code{delete-region}. Finally, the functions @code{display-buffer} or
 @code{pop-to-buffer} will place the buffer in an Emacs window. When you
 present data, you may also choose to have some specialised major
@@ -1158,7 +1158,7 @@ better to give a name to the @code{lambda}, i.e. to define a function. As
 such, we may write the following (@ref{When to use a named function or a lambda function}):
 
 @lisp
-(defun my-buffer-visble-and-text-p (buffer)
+(defun my-buffer-visible-and-text-p l(buffer)
   "Return BUFFER if it is visible and its major mode derives from `text-mode'."
   (with-current-buffer buffer
     ;; The convention for buffers which are not meant to be seen by
@@ -1167,7 +1167,7 @@ such, we may write the following (@ref{When to use a named function or a lambda 
     (and (not (string-prefix-p " " (buffer-name buffer)))
          (derived-mode-p 'text-mode))))
 
-(seq-filter #'my-buffer-visble-and-text-p (buffer-list))
+(seq-filter #'my-buffer-visible-and-text-p (buffer-list))
 @end lisp
 
 As with buffers, Emacs windows and frames have their own parameters. I
@@ -3273,7 +3273,7 @@ called (or the entire feature is explicitly loaded by the user or
 another program). This is the correct way to organise the code of a
 program.
 
-From the programmer's persective, autoloading is set up with those
+From the programmer's perspective, autoloading is set up with those
 special @samp{;;;###autoload} comments. For example:
 
 @lisp
@@ -3364,7 +3364,7 @@ autoload mechanism. Once you invoke a command, Emacs will take care to
 load the corresponding file and then perform whatever computation the
 command specifies (@ref{Make your interactive function also work from Lisp calls}).
 
-What is usually autoloaded are commnads, though variables can be
+What is usually autoloaded are commands, though variables can be
 handled the same way. It all depends on what the program is doing.
 
 @node Pattern match with @code{pcase} and related
@@ -3458,7 +3458,7 @@ main features of the DSL now under consideration:
 
 Go ahead and evaluate that function and then try it out (@ref{Evaluate Emacs Lisp}).
 What it showcases is the various ways we write the cases that @code{pcase}
-checks for. You wil notice the use of the backtick and the comma,
+checks for. You will notice the use of the backtick and the comma,
 which is similar to the quasi quoting I have covered before (@ref{Evaluate some elements inside of a list}).
 Those perform the pattern matching against the expression that is
 given to @code{pcase}, in this case the @samp{argument}. If the pattern matches,
@@ -4177,7 +4177,7 @@ fun!
 Thanks to the following people for fixing typos and spotting other
 such mistakes:
 
-Laurent Gatto, Nicolas Semrau, slackline.
+José David Pernía, Laurent Gatto, Nicolas Semrau, slackline, eNotchy.
 
 @node GNU Free Documentation License
 @appendix GNU Free Documentation License
