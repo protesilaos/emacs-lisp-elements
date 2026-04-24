@@ -1,5 +1,5 @@
 #+title: Emacs Lisp Elements
-#+author: Protesilaos Stavrou
+#+author: Protesilaos
 #+email: info@protesilaos.com
 #+language: en
 #+options: ':t toc:nil author:t email:t num:t
@@ -13,13 +13,13 @@
 #+texinfo_dir_title: Emacs Lisp Elements: (elispelem)
 #+texinfo_dir_desc: A big picture view of Emacs Lisp
 #+texinfo_header: @set MAINTAINERSITE @uref{https://protesilaos.com,maintainer webpage}
-#+texinfo_header: @set MAINTAINER Protesilaos Stavrou
+#+texinfo_header: @set MAINTAINER Protesilaos
 #+texinfo_header: @set MAINTAINEREMAIL @email{info@protesilaos.com}
 #+texinfo_header: @set MAINTAINERCONTACT @uref{mailto:info@protesilaos.com,contact the maintainer}
 
 #+texinfo: @insertcopying
 
-This book, written by Protesilaos Stavrou, also known as "Prot",
+This book, written by Protesilaos, also known as "Prot",
 provides a big picture view of the Emacs Lisp programming language.
 
 The information furnished herein corresponds to stable version
@@ -4106,7 +4106,7 @@ slackline, eNotchy.
 :CUSTOM_ID: h:copying
 :END:
 
-Copyright (C) 2025 Protesilaos Stavrou
+Copyright (C) 2025 Protesilaos
 
 #+begin_quote
 Permission is granted to copy, distribute and/or modify this document
