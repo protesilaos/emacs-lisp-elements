@@ -770,7 +770,7 @@ Certain data types in Emacs Lisp are "self-evaluating". This means
 that if you evaluate them, their return value is what you are already
 working with. For example, the return value of the string of
 characters ="Protesilaos"= is ="Protesilaos"=. This is true for
-strings, numbers, keywords, symbols, and the special ~nil~ or ~t~.
+strings, numbers, keywords, and the special symbols ~nil~ and ~t~.
 Here is a list with a sample of each of these, which you construct by
 calling the function ~list~:
 
@@ -3230,7 +3230,7 @@ If you have ever installed a package, then you most likely have files
 with autoloads. You can check what they look like by doing the
 following:
 
-- Visit the directory where you Emacs configuration file is. It might
+- Visit the directory where your Emacs configuration file is. It might
   be at =~/.emacs.d/= or =~/.config/emacs/=. When in doubt, inspect
   the value of the variable ~user-emacs-directory~.
 
